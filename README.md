@@ -14,6 +14,6 @@ Summary:
  - `#TODO`
 
 Thoughts on Puzzles:
- - `#TODO`
+ - Day 1: Much harder than last year, overlapping strings made my first solution fail
 
 Overall - `#TODO`
