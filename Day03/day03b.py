@@ -1,3 +1,5 @@
+import util
+
 def get_number(lines, x, y): #work backwards to find start of number, move foward one, find number
     number_acc = ""
     while x >= 0 and lines[y][x].isnumeric():
@@ -24,9 +26,7 @@ def main():
                         if xd == 0 and yd == 0:
                             continue
 
-                        if x + xd < 0 or x + xd >= len(line):
-                            continue
-                        if y + yd < 0 or y + yd >= len(lines):
+                        if util.out_of_bounds(lines, x + xd, y + yd):
                             continue
 
                         if lines[y+yd][x+xd].isnumeric():

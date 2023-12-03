@@ -8,7 +8,7 @@ techniques.
 The repo also contains the template file I used, as well as the scripts
 to launch each part quickly.
 
-![TODO - leaderboard picture](Leaderboard.png)
+![TODO - leaderboard picture](leaderboard.png)
 
 Summary:
  - `#TODO`

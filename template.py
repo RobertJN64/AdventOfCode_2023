@@ -1,3 +1,5 @@
+import util
+
 def main():
     with open("rep_DAY_CODE") as f:
         lines = [line.strip() for line in f.readlines()]
