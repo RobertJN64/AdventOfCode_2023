@@ -16,5 +16,6 @@ Summary:
 Thoughts on Puzzles:
  - Day 1: Much harder than last year, overlapping strings made my first solution fail
  - Day 2: Fun puzzle, great score!
+ - Day 3: Annoying puzzle (because I scored poorly), so many off by 1 errors...
 
 Overall - `#TODO`
