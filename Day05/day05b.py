@@ -12,14 +12,14 @@ def main():
     seeds = []
     for i in range(0, len(_t), 2):
         seeds.append((_t[i], _t[i+1]))
-    print(seeds)
+
 
     lines = lines[1:]
 
     for i in range(0, len(lines)):
         line = lines[i]
         if line == '': #starting a new soil map
-            print(lines[i +1])
+
             i += 2
 
             maps = []
@@ -30,7 +30,7 @@ def main():
                 i += 1
 
             maps.sort(key=lambda x: x[1])
-            print("MAPS: ", maps)
+
 
             j = 0
             new_seeds = []
@@ -69,7 +69,6 @@ def main():
                 j += 1
 
             seeds = new_seeds
-            print("SEEDS", seeds)
 
     m = float('inf')
     for s, r in seeds:

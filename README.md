@@ -18,5 +18,6 @@ Thoughts on Puzzles:
  - Day 2: Fun puzzle, great score!
  - Day 3: Annoying puzzle (because I scored poorly), so many off by 1 errors...
  - Day 4: Straightforward, clever twist
+ - Day 5: Part 1 is fun... WTF
 
 Overall - `#TODO`
