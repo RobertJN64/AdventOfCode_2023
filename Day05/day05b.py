@@ -36,48 +36,37 @@ def main():
             new_seeds = []
             while j < len(seeds):
                 seed, l = seeds[j]
+                if l == 0:
+                    j+=1
+                    continue
+
                 for dest_start, src_start, range_length in maps:
+                    if seed < src_start:
+                        if l < src_start-seed:
+                            new_seeds.append((seed, l)) #range smaller than smallest
+                        else:
+                            new_seeds.append((seed, src_start-seed))  # range smaller than smallest
+                            seeds.append((src_start, l-(src_start-seed)))
+                        break
+
                     if src_start <= seed < src_start + range_length: #seed drops into range
-                        seed_end_v = seed + l
-                        input_end_v = src_start + range_length
+                        if l < range_length - (seed-src_start):
+                            new_seeds.append((dest_start + (seed-src_start), l)) #falls entirely in range
+                        else: #extends past edge
+                            new_seeds.append((dest_start + (seed-src_start), range_length - (seed-src_start)))  # range smaller than smallest
+                            seeds.append((src_start + range_length, l - (range_length - (seed-src_start))))
+                            #print(seeds)
+                        break
 
-                        if seed_end_v <= input_end_v:
-                            new_seeds.append((dest_start + (seed - src_start), l))
-                            break
 
-                        else:
-
-                        new_l = l - range_length
-
-                        if new_l > 0:
-                            seed = seed + range_length
-                            l = new_l
-                        else:
-                            break
-
-                    elif src_start <= seed + l and seed < src_start + range_length:
-                        # ok - we need to slice off some values from the bottom - we can add these as raw
-                        print("app", seed, src_start-seed)
-                        new_seeds.append((seed, src_start-seed))
-
-                        seed = src_start
-                        l = l - (src_start-seed)
-
-                        new_seeds.append((dest_start + (seed - src_start), min(l, range_length)))
-                        new_l = l - range_length
-
-                        if new_l > 0:
-                            seed = seed + range_length
-                            l = new_l
-                        else:
-                            break
+                    else:
+                        pass
+                        #TOO HIGH, KEEP CEHCKINF FOR HIGHER ONES
 
                 else:
                     new_seeds.append((seed, l))
 
                 j += 1
-
-
 
             seeds = new_seeds
             print("SEEDS", seeds)
