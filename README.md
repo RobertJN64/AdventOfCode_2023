@@ -19,5 +19,6 @@ Thoughts on Puzzles:
  - Day 3: Annoying puzzle (because I scored poorly), so many off by 1 errors...
  - Day 4: Straightforward, clever twist
  - Day 5: Part 1 is fun... WTF
+ - Day 6: Easy, part 2 brute force in 5 seconds
 
 Overall - `#TODO`
