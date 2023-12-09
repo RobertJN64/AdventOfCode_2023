@@ -21,7 +21,7 @@ Thoughts on Puzzles:
  - Day 5: Part 1 is fun... WTF
  - Day 6: Easy, part 2 brute force in 5 seconds
  - Day 7: I don't really like poker puzzles, cool use of `__gt__` though
- - Day 8:
+ - Day 8: Part 2 was the second "hard puzzle", mostly b/c needed a lot of assumptions
  - Day 9: Simple derivative puzzle, very fun
 
 Overall - `#TODO`
