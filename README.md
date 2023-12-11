@@ -24,5 +24,6 @@ Thoughts on Puzzles:
  - Day 8: Part 2 was the second "hard puzzle", mostly b/c needed a lot of assumptions
  - Day 9: Simple derivative puzzle, very fun
  - Day 10: Part 2 was an exceptional quality puzzle, I'm very proud of my winding direction based solution
+ - Day 11: Fun, good prevention of bruteforce on part2
 
 Overall - `#TODO`
