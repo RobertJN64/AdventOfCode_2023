@@ -1,6 +1,7 @@
 import util
 
 def resolve_possibilties(item, numbers, number_index):
+    #print(f"Called with {item} {number_index}")
     count = 0
 
     item = item.strip('.')
@@ -16,12 +17,13 @@ def resolve_possibilties(item, numbers, number_index):
         return count
 
     new_item = item[seq_len + 1:]
-    if new_item == '' and number_index == len(numbers) - 1:
-        print(f"Found valid {item}")
+    if '#' not in new_item and number_index == len(numbers) - 1:
+        #print(f"Found valid {item}")
         return 1 + count
     elif new_item == '' or number_index == len(numbers) - 1:
         return count
     else:
+        #print()
         return count + resolve_possibilties(new_item, numbers, number_index + 1)
 
 
@@ -32,16 +34,11 @@ def main():
 
     answer = 0
 
-    for i, line in enumerate(lines[5:]):
+    for i, line in enumerate(lines):
 
         markers, numbers = line.split(' ')
-        numbers = list(map(int, numbers.split(',')))
-
-        # markers: str = ((markers + '?') * 5)[:-1]
-        # numbers = list(map(int, numbers.split(','))) * 5
-
-        #spring_count = sum(numbers)
-
+        markers: str = ((markers + '?') * 5)[:-1]
+        numbers = list(map(int, numbers.split(','))) * 5
         count = resolve_possibilties(markers, numbers, 0)
         answer += count
         print(i, count)
