@@ -31,12 +31,9 @@ def find_vert_line(grid):
         else:
             b = b[-len(a):]
 
-        print(y, a, b)
 
         for c, d in zip(a, b):
-            print(c, d)
             if c != d:
-                print('fail')
                 perfect = False
 
         if perfect:
@@ -61,12 +58,12 @@ def main():
 
     answer = 0
     for grid in grids:
-        #util.print_grid(grid)
+        util.print_grid(grid)
         answer += find_horiz_line(grid) + 100 * find_vert_line(grid)
 
-        util.print_grid(grid)
-        print(find_horiz_line(grid))
-        print(find_vert_line(grid))
+        #util.print_grid(grid)
+        #print(find_horiz_line(grid))
+        #print(find_vert_line(grid))
         assert find_horiz_line(grid) != 0 or find_vert_line(grid) != 0
         assert find_horiz_line(grid) == 0 or find_vert_line(grid) == 0
     print(answer)
