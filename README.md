@@ -25,5 +25,8 @@ Thoughts on Puzzles:
  - Day 9: Simple derivative puzzle, very fun
  - Day 10: Part 2 was an exceptional quality puzzle, I'm very proud of my winding direction based solution
  - Day 11: Fun, good prevention of bruteforce on part2
+ - Day 12: Cacheing made part2 1000x faster - good puzzle
+ - Day 13: I'm bad at reading, missed that the old mirror line might still be valid
+ - Day 14: TOP 50 both parts!! Super simple to write solution with cacheing and jump ahead on part 2
 
 Overall - `#TODO`
