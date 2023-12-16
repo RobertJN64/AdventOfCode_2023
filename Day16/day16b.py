@@ -12,6 +12,19 @@ mir_map = {
         {0: 2, 1: 3, 3: 1, 2: 0}
 }
 
+def add_laser(lasers, x, y, d, grid):
+    if d == 0:
+        x += 1
+    if d == 1:
+        x -= 1
+    if d == 2:
+        y += 1
+    if d == 3:
+        y -= 1
+    if util.out_of_bounds(grid, x, y):
+        return
+    lasers.append((x, y, d))
+
 def score(grid, startx, starty, startd):
     energerized = []
     for row in grid:
@@ -32,40 +45,27 @@ def score(grid, startx, starty, startd):
         visited.append((x, y, d))
         energerized[y][x] = '#'
 
-        new_lasers = []
+        tile = grid[y][x]
 
-        if grid[y][x] == '.':
-            new_lasers.append((x, y, d))
-        elif grid[y][x] in mir_map:
+        if tile == '.':
+            add_laser(lasers, x, y, d, grid)
+        elif tile in mir_map:
             d = mir_map[grid[y][x]][d]
-            new_lasers.append((x, y, d))
-        elif grid[y][x] == '|':
+            add_laser(lasers, x, y, d, grid)
+        elif tile == '|':
             if d in [0, 1]:
-                new_lasers.append((x, y, 2))
-                new_lasers.append((x, y, 3))
+                add_laser(lasers, x, y, 2, grid)
+                add_laser(lasers, x, y, 3, grid)
             else:
-                new_lasers.append((x, y, d))
-        elif grid[y][x] == '-':
+                add_laser(lasers, x, y, d, grid)
+        elif tile == '-':
             if d in [2, 3]:
-                new_lasers.append((x, y, 0))
-                new_lasers.append((x, y, 1))
+                add_laser(lasers, x, y, 0, grid)
+                add_laser(lasers, x, y, 1, grid)
             else:
-                new_lasers.append((x, y, d))
+                add_laser(lasers, x, y, d, grid)
         else:
             raise Exception("Invalid square")
-
-        for (x, y, d) in new_lasers:
-            if d == 0:
-                x += 1
-            if d == 1:
-                x -= 1
-            if d == 2:
-                y += 1
-            if d == 3:
-                y -= 1
-            if util.out_of_bounds(grid, x, y):
-                continue
-            lasers.append((x, y, d))
 
     answer = 0
     for row in energerized:
@@ -80,12 +80,12 @@ def main():
     print(grid[0:10])
 
     mscore = 0
-    for x in range(0, len(grid[0])):
+    for x in range(0, 10):
         print(x)
         mscore = max(mscore, score(grid, x, 0, 2))
         mscore = max(mscore, score(grid, x, len(grid)-1, 3))
 
-    for y in range(0, len(grid)):
+    for y in range(0, 10):
         print(y)
         mscore = max(mscore, score(grid, 0, y, 0))
         mscore = max(mscore, score(grid, len(grid[0])-1, y, 1))
