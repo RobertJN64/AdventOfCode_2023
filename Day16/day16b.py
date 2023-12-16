@@ -26,24 +26,21 @@ def get_step(x, y, d):
 
 @profile
 def score(grid, startx, starty, startd):
-    energerized = []
-    for row in grid:
-        t = []
-        for _ in row:
-            t.append('.')
-        energerized.append(t)
-
+    energerized = set()
     lasers = [(startx, starty, startd)]
     visited = set()
+
+    maxy = len(grid)
+    maxx = len(grid[0])
 
     while lasers:
         # util.print_grid(energerized)
         x, y, d = lasers.pop(0)
-        while not util.out_of_bounds(grid, x, y):
+        while util.fast_in_bounds(x, y, 0, maxx, 0, maxy):
             if (x, y, d) in visited:
                 break
             visited.add((x, y, d))
-            energerized[y][x] = '#'
+            energerized.add((x, y))
 
             tile = grid[y][x]
 
@@ -67,12 +64,7 @@ def score(grid, startx, starty, startd):
             else:
                 raise Exception("Invalid square")
 
-    answer = 0
-    for row in energerized:
-        for val in row:
-            if val == '#':
-                answer += 1
-    return answer
+    return len(energerized)
 
 def main():
     with open("Day16/day16.txt") as f:
@@ -80,13 +72,13 @@ def main():
     print(grid[0:10])
 
     mscore = 0
-    for x in range(0, 10):
-        print(x)
+    for x in range(0, len(grid[0])):
+        #print(x)
         mscore = max(mscore, score(grid, x, 0, 2))
         mscore = max(mscore, score(grid, x, len(grid)-1, 3))
 
-    for y in range(0, 10):
-        print(y)
+    for y in range(0, len(grid)):
+        #print(y)
         mscore = max(mscore, score(grid, 0, y, 0))
         mscore = max(mscore, score(grid, len(grid[0])-1, y, 1))
 

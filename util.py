@@ -5,6 +5,9 @@ def out_of_bounds(grid, x, y):
         return True
     return False
 
+def fast_in_bounds(x, y, minx, maxx, miny, maxy):
+    return minx <= x < maxx and miny <= y < maxy
+
 def print_grid(grid):
     for line in grid:
         print(''.join(line))
