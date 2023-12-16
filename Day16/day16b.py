@@ -1,3 +1,4 @@
+from line_profiler import profile
 import util
 
 # 0 = Going East
@@ -23,6 +24,7 @@ def get_step(x, y, d):
         y -= 1
     return x, y, d
 
+@profile
 def score(grid, startx, starty, startd):
     energerized = []
     for row in grid:
@@ -32,7 +34,7 @@ def score(grid, startx, starty, startd):
         energerized.append(t)
 
     lasers = [(startx, starty, startd)]
-    visited = []
+    visited = set()
 
     while lasers:
         # util.print_grid(energerized)
@@ -40,7 +42,7 @@ def score(grid, startx, starty, startd):
         while not util.out_of_bounds(grid, x, y):
             if (x, y, d) in visited:
                 break
-            visited.append((x, y, d))
+            visited.add((x, y, d))
             energerized[y][x] = '#'
 
             tile = grid[y][x]
@@ -78,12 +80,12 @@ def main():
     print(grid[0:10])
 
     mscore = 0
-    for x in range(0, len(grid[0])):
+    for x in range(0, 10):
         print(x)
         mscore = max(mscore, score(grid, x, 0, 2))
         mscore = max(mscore, score(grid, x, len(grid)-1, 3))
 
-    for y in range(0, len(grid)):
+    for y in range(0, 10):
         print(y)
         mscore = max(mscore, score(grid, 0, y, 0))
         mscore = max(mscore, score(grid, len(grid[0])-1, y, 1))
