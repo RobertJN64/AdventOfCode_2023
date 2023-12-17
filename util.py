@@ -13,6 +13,15 @@ def print_grid(grid):
         print(''.join(line))
     print()
 
+def str_pad(x):
+    s = str(x)
+    return ' ' * (5 - len(s)) + s
+
+def print_grid_spaced(grid):
+    for line in grid:
+        print(''.join(map(str_pad, line)))
+    print()
+
 def debug_IO(f):
     def wrap(*args, **kwargs):
         s = f"Calling {f.__name__} with {args=} {kwargs=}"
