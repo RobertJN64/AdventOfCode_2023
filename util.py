@@ -15,7 +15,7 @@ def print_grid(grid):
 
 def str_pad(x):
     s = str(x)
-    return ' ' * (5 - len(s)) + s
+    return ' ' * (20 - len(s)) + s
 
 def print_grid_spaced(grid):
     for line in grid:
