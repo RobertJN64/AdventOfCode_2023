@@ -27,17 +27,24 @@ def main():
     # 2 = Going South
     # 3 = Going North
 
-    queue = [(0,0,d,1,0,[]) for d in range(0,3)] #x, y, direction, counter, heat
+    queue = [(0,0,d,1,0) for d in range(0,3)] #x, y, direction, counter, heat
     visited = {}
     while queue:
-        x, y, d, c, h, hist = queue.pop(0)
+        x, y, d, c, h = queue.pop(0)
 
+        if not should_add(x, y, d, c, h, visited):
+            continue
+
+        if (x, y, d, c) not in visited:
+            print(x, y, d, c)
+
+        #
         # if x == 12 and y == 12:
         #     print(h, hist)
         #     print_path(hist, heat)
-
-        hist = copy.deepcopy(hist)
-        hist.append((x,y))
+        #
+        # hist = copy.deepcopy(hist)
+        # hist.append((x,y))
 
         if c > 3:
             raise Exception()
@@ -68,12 +75,13 @@ def main():
             if nd == d:
                 if c < 3:
                     if should_add(x, y, d, c+1, h, visited):
-                        queue.append((x, y, d, c+1, h, hist))
+                        queue.append((x, y, d, c+1, h))
             else:
                 if should_add(x, y, nd, 1, h, visited):
-                    queue.append((x, y, nd, 1, h, hist))
+                    queue.append((x, y, nd, 1, h))
 
-        print(len(queue))
+        if len(queue)%1000 == 0:
+            print(len(queue), len(visited))
 
     #print('DONE', visited)
     best_score = float('inf')
