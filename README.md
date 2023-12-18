@@ -28,5 +28,8 @@ Thoughts on Puzzles:
  - Day 12: Cacheing made part2 1000x faster - good puzzle
  - Day 13: I'm bad at reading, missed that the old mirror line might still be valid
  - Day 14: TOP 50 both parts!! Super simple to write solution with cacheing and jump ahead on part 2
+ - Day 15: Hashmaps - took me a bit to write part 2 b/c I'm bad at reading
+ - Day 16: Fun puzzle - optimized with sets() after using line_profiler
+ - Day 17: Very hard because bruteforce didn't work and traditional maze algorithms were hard to adapt
 
 Overall - `#TODO`
