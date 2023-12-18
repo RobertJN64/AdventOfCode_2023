@@ -39,7 +39,7 @@ def main():
         for y, row in enumerate(heat):
             for x, tile in enumerate(row):
                 #SCAN EAST
-                for xdif in [1, 2, 3]:
+                for xdif in [4, 5, 6, 7, 8, 9, 10]:
                     if util.out_of_bounds(heat, x + xdif, y):
                         continue
 
@@ -52,7 +52,7 @@ def main():
                         tile.east_cost = acc_cost
 
                 #SCAN WEST
-                for xdif in [-3, -2, -1]:
+                for xdif in [-10, -9, -8, -7, -6, -5, -4]:
                     if util.out_of_bounds(heat, x + xdif, y):
                         continue
 
@@ -65,7 +65,7 @@ def main():
                         tile.west_cost = acc_cost
 
                 #SCAN SOUTH
-                for ydif in [1, 2, 3]:
+                for ydif in [4, 5, 6, 7, 8, 9, 10]:
                     if util.out_of_bounds(heat, x, y + ydif):
                         continue
 
@@ -78,7 +78,7 @@ def main():
                         tile.south_cost = acc_cost
 
                 # SCAN NORTH
-                for ydif in [-3, -2, -1]:
+                for ydif in [-10, -9, -8, -7, -6, -5, -4]:
                     if util.out_of_bounds(heat, x, y + ydif):
                         continue
 
