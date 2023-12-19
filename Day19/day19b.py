@@ -3,7 +3,8 @@ import util
 
 #SOLVE WITH BRANCH BIFURCATION
 
-branches = []
+inversions = {'<': '>=',
+              '>': '<='}
 
 class Condition:
     def __init__(self):
@@ -84,7 +85,7 @@ def main():
         t_rules = list(map(Rule, workflow.split(',')))
         workflows[name] = t_rules
 
-    conditions = []
+    conditions: list[Condition] = []
 
     def parse_target(target, condition):
         if target == 'A':
@@ -105,13 +106,18 @@ def main():
                 c2.update(rule.char, rule.op, rule.num)
                 parse_target(rule.target, c2)
 
-                #Apply inverse condition
-
+                condition.update(rule.char, inversions[rule.op], rule.num)
             else:
                 parse_target(rule.target, condition)
 
     rrr(workflows['in'], Condition())
 
-    score = 0
+    accept = 0
+    reject = 0
+    for c in conditions:
+        ad, rd = c.calc()
+        accept += ad
+        reject += rd
 
-    print(conditions)
+    assert accept + reject == 4000 ** 4
+    print(accept)
