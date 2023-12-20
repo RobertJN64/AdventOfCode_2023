@@ -31,5 +31,7 @@ Thoughts on Puzzles:
  - Day 15: Hashmaps - took me a bit to write part 2 b/c I'm bad at reading
  - Day 16: Fun puzzle - optimized with sets() after using line_profiler
  - Day 17: Very hard because bruteforce didn't work and traditional maze algorithms were hard to adapt
+ - Day 18: First part2 I didn't solve in 24 hrs
+ - Day 19: Excellent puzzle, super fun recursive solution in part2
 
 Overall - `#TODO`
