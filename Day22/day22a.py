@@ -34,6 +34,10 @@ def main():
 
     done = False
     while not done:
+        print("loop iteration...")
+        print(sum(brick[CORNER_1][Z] for brick in bricks) / len(bricks))
+        moved = 0
+
         done = True
         for b1_index, b1 in enumerate(bricks):
             min_x, max_x, min_y, max_y, bottom_z, _ = get_brick_min_max(b1)
@@ -44,18 +48,22 @@ def main():
             for b2_index, b2 in enumerate(bricks):
                 min_x2, max_x2, min_y2, max_y2, _, support_z = get_brick_min_max(b2)
                 if bottom_z - 1 == support_z:
-                    print(f"{b1_index} one layer above {b2_index}")
+                    #print(f"{b1_index} one layer above {b2_index}")
 
 
                     if (check_range_overlap(min_x, max_x, min_x2, max_x2) and
                         check_range_overlap(min_y, max_y, min_y2, max_y2)):
-                        print(f"{b1_index} contacts {b2_index}")
+                        #print(f"{b1_index} contacts {b2_index}")
                         break
 
             else:
                 b1[CORNER_1][Z] -= 1
                 b1[CORNER_2][Z] -= 1
                 done = False
+                moved += 1
+
+        print(str(round(moved/len(bricks) * 100, 3)) + '%')
+
         print()
 
     print("------")
