@@ -1,4 +1,5 @@
 import util
+import line_profiler
 
 X = 0
 Y = 1
@@ -26,11 +27,14 @@ def check_partial_overlap(start, end, v1, v2):
 def check_range_overlap(start1, end1, start2, end2):
     return check_partial_overlap(start1, end1, start2, end2) or check_partial_overlap(start2, end2, start1, end1)
 
+@line_profiler.profile
 def main():
     with open("Day22/day22.txt") as f:
         bricks = [line.strip().split('~') for line in f.readlines()]
     bricks = [(list(map(int, a.split(','))), list(map(int, b.split(',')))) for (a,b) in bricks]
     print(bricks[0:10])
+
+    c = 0
 
     done = False
     while not done:
@@ -66,6 +70,10 @@ def main():
 
         print()
 
+        if c > 3:
+            break
+        c+=1
+
     print("------")
 
     safe_to_remove = [True] * len(bricks)
@@ -89,6 +97,5 @@ def main():
 
     print("\nFINAL ANSWER:")
     print(safe_to_remove.count(True))
-
 
 

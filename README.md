@@ -33,5 +33,8 @@ Thoughts on Puzzles:
  - Day 17: Very hard because bruteforce didn't work and traditional maze algorithms were hard to adapt
  - Day 18: First part2 I didn't solve in 24 hrs
  - Day 19: Excellent puzzle, super fun recursive solution in part2
+ - Day 20: Fun puzzle, confusing directions, no idea on how to do part2
+ - Day 21: Part 1 easy, no idea on how to approach part 2
+ - Day 22: Fun physics puzzle, part 2 wasn't bad
 
 Overall - `#TODO`
