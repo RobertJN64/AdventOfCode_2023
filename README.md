@@ -36,5 +36,7 @@ Thoughts on Puzzles:
  - Day 20: Fun puzzle, confusing directions, no idea on how to do part2
  - Day 21: Part 1 easy, no idea on how to approach part 2
  - Day 22: Fun physics puzzle, part 2 wasn't bad
+ - Day 23: Easy part 1, part 2 infinite grid isn't happening
+ - Day 24: Part 1 solve using custom equation solver, part 2 using a combination of brute force and custom equation solvers - hardest AoC I have ever solved
 
 Overall - `#TODO`
