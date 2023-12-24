@@ -81,6 +81,7 @@ def main():
                         rock_x, rock_y, rock_z, rock_vx, rock_vy, rock_vz
                 ) for stone in stones):
                     print(rock_x, rock_y, rock_z, rock_vx, rock_vy, rock_vz)
+                    print(sum([rock_x, rock_y, rock_z]))
                     raise Exception("FINAL ANSWER")
 
             except ZeroDivisionError:
