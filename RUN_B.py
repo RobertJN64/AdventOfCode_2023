@@ -1,3 +1,3 @@
-from Day18 import day18b as prog
-print('Running day 18 B')
+from Day24 import day24b_bruteforce as prog
+print('Running day 24 B')
 prog.main()
