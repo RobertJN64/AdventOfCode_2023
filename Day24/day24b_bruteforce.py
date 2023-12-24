@@ -38,16 +38,43 @@ def main():
     with open("Day24/day24.txt") as f:
         stones = [Stone(line.strip()) for line in f.readlines()]
 
-    for rock_vx in range(-1000, 1000):
-        for rock_vy in range(-1000, 1000):
+    s1 = stones[0]
+    s2 = stones[1]
+
+    scan_size = 20
+    for rock_vx in range(-scan_size, scan_size):
+        for rock_vy in range(-scan_size, scan_size):
             print(rock_vx, rock_vy)
-            for rock_vz in range(-1000, 1000):
-                for time_step in range(0, 20):
-                    rock_x = stones[0].x + (stones[0].vx - rock_vx) * time_step
-                    rock_y = stones[0].y + (stones[0].vy - rock_vy) * time_step
-                    rock_z = stones[0].z + (stones[0].vz - rock_vz) * time_step
+            for rock_vz in range(-scan_size, scan_size):
+                #GOAL: solve for s1 time so we can derive x, y, z pos using s1 and s2 pos
+                #(s1.vx - rock_vx) * s1_time + s1.x = (s2.vx - rock_vx) * s2_time + s2.x
+                #(s1.vy - rock_vy) * s1_time + s1.y = (s2.vy - rock_vy) * s2_time + s2.y
+
+                s1_dvx = (s1.vx - rock_vx)
+                s1_dvy = (s1.vy - rock_vy)
+                s2_dvx = (s2.vx - rock_vx)
+                s2_dvy = (s2.vy - rock_vy)
+
+                num = (s1.y - s2.y) * s2_dvx - (s1.x - s2.x) * s2_dvy
+                denom = s1_dvx * s2_dvy - s1_dvy * s2_dvx
+                try:
+                    time = num/denom
+
+                    rock_x = s1_dvx * time + s1.x
+                    rock_y = s1_dvy * time + s1.y
+                    rock_z = (s1.vz - rock_vz) * time + s1.z
+                    #
+                    # if rock_vx == -3 and rock_vy == 1:
+                    #     print(time, rock_x, rock_y, rock_z)
 
                     if all(stone.could_work(
                             rock_x, rock_y, rock_z, rock_vx, rock_vy, rock_vz
                     ) for stone in stones):
                         print(rock_x, rock_y, rock_z, rock_vx, rock_vy, rock_vz)
+                        raise Exception("FINAL ANSWER")
+
+                except ZeroDivisionError:
+                    pass
+
+
+
