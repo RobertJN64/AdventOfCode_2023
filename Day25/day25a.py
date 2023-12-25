@@ -1,3 +1,5 @@
+import copy
+
 import util
 
 class Wire:
@@ -47,6 +49,10 @@ def calc_group_size(nodes: dict[str, Node]):
 
     return [len(slist) for slist in found]
 
+def break_connection(wire: Wire, nodes: dict[str, Node]):
+    nodes[wire.a].connections.remove(wire.b)
+    nodes[wire.b].connections.remove(wire.a)
+
 def main():
     with open("Day25/day25.txt") as f:
         lines = [line.strip() for line in f.readlines()]
@@ -62,5 +68,23 @@ def main():
 
             add_node(start, end, nodes)
 
-    print(nodes)
-    print(calc_group_size(nodes))
+    for aindex, wire_a in enumerate(wires):
+        print(aindex * 100 / len(wires))
+        for bindex, wire_b in enumerate(wires[aindex+1:]):
+            for wire_c in wires[bindex+aindex+2:]:
+                t_nodes = copy.deepcopy(nodes)
+                break_connection(wire_a, t_nodes)
+                break_connection(wire_b, t_nodes)
+                break_connection(wire_c, t_nodes)
+                cgs = calc_group_size(t_nodes)
+                if len(cgs) == 2:
+                    print(cgs, wire_a, wire_b, wire_c)
+                    print(cgs[0] * cgs[1])
+                    raise Exception("ANSWER")
+
+                #
+                # print(wire_a, wire_b, wire_c)
+
+    # print(wires)
+    # print(nodes)
+    # print(calc_group_size(nodes))
