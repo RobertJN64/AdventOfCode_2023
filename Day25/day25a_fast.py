@@ -33,21 +33,19 @@ def add_node(a: str, b: str, nodes: dict[str, Node]):
     nodes[b].add_connection(a)
 
 @line_profiler.profile
-def is_split_group(nodes: dict[str, Node], wires):
-    start_node = list(nodes.keys())[0]
+def is_split_group(nodes: dict[str, Node], wire):
+    start_node = wire.a
     found = {start_node}
-
     queue = [start_node]
     while queue:
         node = queue.pop(0)
         for conn in nodes[node].connections:
+            if conn == wire.b:
+                return False, 0
+
             if conn not in found:
                 found.add(conn)
                 queue.append(conn)
-
-        for wire in wires:
-            if wire.a in found and wire.b in found:
-                return False, 0
 
     return len(found) != len(nodes), len(found)
 
@@ -87,7 +85,7 @@ def main():
 
             for wire_c in wires[bindex+aindex+2:]:
                 break_connection(wire_c)
-                valid, size = is_split_group(nodes, [wire_a, wire_b, wire_c])
+                valid, size = is_split_group(nodes, wire_a)
                 restore_connection(wire_c)
 
                 if valid:
