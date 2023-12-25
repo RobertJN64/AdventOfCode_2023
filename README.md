@@ -42,5 +42,3 @@ Thoughts on Puzzles:
  - Day 23: Easy part 1, part 2 infinite grid isn't happening
  - Day 24: Part 1 solve using custom equation solver, part 2 using a combination of brute force and custom equation solvers - hardest AoC I have ever solved
  - Day 25: Currently unsolved (too slow for real data), need more graph theory knowledge...
-
-Overall - `#TODO`
