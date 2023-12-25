@@ -11,7 +11,10 @@ to launch each part quickly.
 ![TODO - leaderboard picture](leaderboard.png)
 
 Summary:
- - `#TODO`
+ - Better scores than last year (more solves, better leaderboard positions)
+ - First week part2 was strangely difficult, probably to stop ChatGPT solvers
+ - Some extremely fun puzzles later on: Day10 pipe maze, Day 16 lasers, Day 24 hailstones
+ - Day 19 was most fun I've had doing AoC
 
 Thoughts on Puzzles:
  - Day 1: Much harder than last year, overlapping strings made my first solution fail
@@ -38,5 +41,6 @@ Thoughts on Puzzles:
  - Day 22: Fun physics puzzle, part 2 wasn't bad
  - Day 23: Easy part 1, part 2 infinite grid isn't happening
  - Day 24: Part 1 solve using custom equation solver, part 2 using a combination of brute force and custom equation solvers - hardest AoC I have ever solved
+ - Day 25: Currently unsolved (too slow for real data), need more graph theory knowledge...
 
 Overall - `#TODO`

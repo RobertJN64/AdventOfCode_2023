@@ -91,7 +91,7 @@ def main():
                 if valid:
                     print(wire_a, wire_b, wire_c)
                     print(size * (len(nodes) - size))
-                    #raise Exception("ANSWER")
+                    raise Exception("ANSWER")
 
             restore_connection(wire_b)
         restore_connection(wire_a)
